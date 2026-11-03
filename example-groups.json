@@ -1,0 +1,43 @@
+{
+  "title": "Road to inbox zero",
+  "account": "you@example.com",
+  "lang": "en",
+  "inbox_now": 2400,
+  "inbox_start": 5000,
+  "groups": [
+    {
+      "action": "trash",
+      "title": "Promotions and newsletters",
+      "count": "~150",
+      "description": "Marketing mail with an unsubscribe link. Sampled 3 subjects: sales, new arrivals, loyalty offers.",
+      "query": "in:inbox -is:starred category:promotions"
+    },
+    {
+      "action": "trash",
+      "title": "Shipping and verification codes",
+      "count": "~90",
+      "description": "Parcel status and one-time codes from retailers and apps.",
+      "query": "in:inbox -is:starred (from:carrier.example OR from:shop.example OR from:accounts.example)"
+    },
+    {
+      "action": "label",
+      "title": "Payslips - label \"Payslips\", then archive",
+      "count": "~30",
+      "description": "Keep for tax. Create the label in Gmail, apply it, then archive.",
+      "query": "in:anywhere from:payroll.example"
+    },
+    {
+      "action": "decide",
+      "title": "Old mail you sent to yourself",
+      "count": "~20",
+      "description": "Could be memories. Your call; recommendation: leave them.",
+      "query": "in:inbox -is:starred older_than:2y from:you@example.com"
+    }
+  ],
+  "keep": ["Starred mail", "Active job processes", "The latest unpaid bill"],
+  "unknown": [
+    "Counts are Gmail estimates.",
+    "Search results carry no dates.",
+    "Message bodies were not read."
+  ]
+}
