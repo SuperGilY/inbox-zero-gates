@@ -43,6 +43,26 @@ Read `references/gates.md` for the reasoning and the incident behind each one.
 3. **Keep in inbox** - active, unpaid, protected, starred.
 4. **Decide** - the user chooses. Always give a recommendation.
 
+## First run: setup interview (do this before any scan)
+The gates only protect what the skill knows is worth protecting. A stranger's inbox has different protected senders than yours, so learn them first.
+
+**Step A - infer, read-only.** Build a candidate list from the mailbox itself:
+- Senders the user has replied to: `in:sent` (sample recipients).
+- Senders of starred mail: `is:starred`.
+- Official-looking senders: banks, insurers, government, health providers, employers, schools (judge by sampled subjects, not by name - G3).
+- Existing user labels from `list_labels`: they show how the user already thinks about their mail.
+
+**Step B - confirm, with buttons.** Show the candidates as a short list and ask:
+1. Which of these must never be touched? (multi-select; the inferred list is the recommended answer)
+2. Which of your existing labels should I reuse for documents worth keeping?
+3. Is there mail you keep for sentimental reasons (old personal mail, mail you sent to yourself)? Default: leave anything older than two years that is personal.
+4. Are you job hunting or waiting on a process (claim, application, refund)? Those stay in the inbox (G9).
+5. Language of the report, English or Hebrew?
+
+**Step C - save the answers** as a small rules file the user keeps (protected senders, labels, keepsake rule, language). Offer it at the end of the session, and read it at the start of the next one so later runs only scan new mail.
+
+Inference proposes, the user decides. Never treat an inferred sender as protected or as safe to delete without the confirmation in step B.
+
 ## Process
 0. Confirm the account (`toRecipients` on a result). Run `list_labels` for the exact inbox total (`INBOX.threadsTotal`) and existing labels. Reuse the user's labels.
 1. Estimate volume per category: `in:inbox category:updates|promotions|personal|social -is:starred` with `pageSize 1` and `THREAD_VIEW_IDS_ONLY`; read `resultCountEstimate`.

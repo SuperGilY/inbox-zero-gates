@@ -6,6 +6,10 @@ Claude reads, groups and judges. **You** do the deleting, by pasting a Gmail que
 through a set of safety **gates** that were learned the hard way, in a real session that took an inbox from
 about 5,400 threads to about 270.
 
+![Example report](docs/report-preview.png)
+
+*The report the skill produces (fictional data). Open [`examples/example-report.html`](examples/example-report.html) in a browser to try the Copy button and the Done checkboxes.*
+
 ## Why gates
 Inbox tools usually fail in one of three ways: they delete something that mattered, they describe a sender
 wrongly because of its name, or they report numbers they cannot know. The gates are the fixes.
@@ -37,6 +41,14 @@ Details and the incident behind each gate: [`references/gates.md`](references/ga
 3. A paste-ready Gmail query per group, verified before you see it.
 4. A private HTML report (`scripts/build_report.py`) with a Copy button and a done-checkbox per group.
    Works on a phone, light and dark, English (LTR) or Hebrew (RTL).
+
+## First run: it learns what matters to you
+Before it scans anything, the skill runs a short setup interview:
+1. It infers candidates from your own mailbox: people you reply to, senders of starred mail, official-looking senders, and the labels you already use.
+2. It shows them and asks what must never be touched, which labels to reuse, whether old personal mail is sentimental, and whether you are waiting on a process (job search, claim, refund).
+3. It offers to save your answers as a small rules file, so the next run only looks at new mail.
+
+Inference proposes, you decide. Nothing inferred is treated as protected or as deletable until you confirm it.
 
 ## Requirements
 - Claude with a Gmail connector that offers `search_threads`, `get_thread` and `list_labels`.
